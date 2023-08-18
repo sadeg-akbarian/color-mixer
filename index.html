@@ -13,9 +13,43 @@
     <title>Color Mixer</title>
   </head>
   <body>
-    <header></header>
+    <header>
+      <form>
+        <section class="threeColors">
+          <label for="red">r</label>
+          <input
+            type="range"
+            id="red"
+            min="0"
+            max="255"
+            value="255"
+            class="red"
+          />
+          <label for="green">g</label>
+          <input
+            type="range"
+            id="green"
+            min="0"
+            max="255"
+            value="105"
+            class="green"
+          />
+          <label for="blue">b</label>
+          <input
+            type="range"
+            id="blue"
+            min="0"
+            max="255"
+            value="180"
+            class="blue"
+          />
+        </section>
+        <section class="hexadecimal">
+          <p id="currentColor">#ff69b4</p>
+        </section>
+      </form>
+    </header>
     <main></main>
-    <footer></footer>
     <script src="script.js"></script>
   </body>
 </html>
