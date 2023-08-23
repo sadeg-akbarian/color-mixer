@@ -1,14 +1,12 @@
 const red = document.querySelector("#red");
 const green = document.querySelector("#green");
 const blue = document.querySelector("#blue");
-const main = document.querySelector("main");
-const header = document.querySelector("header");
-const currentColor = document.querySelector("#currentColor");
 let chosenRedColor = "255";
 let chosenGreenColor = "105";
 let chosenBlueColor = "180";
 
 function mainBackground() {
+  const main = document.querySelector("main");
   main.style.backgroundColor =
     "rgb(" +
     chosenRedColor +
@@ -20,6 +18,7 @@ function mainBackground() {
 }
 
 function headerBackground() {
+  const header = document.querySelector("header");
   header.style.backgroundColor =
     "rgba(" +
     chosenRedColor +
@@ -33,7 +32,7 @@ function headerBackground() {
 //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 function valueToHex(c) {
-  var hex = c.toString(16);
+  const hex = c.toString(16);
   if (hex.length === 1) {
     return "0" + hex;
   } else {
@@ -47,11 +46,10 @@ function rgbToHex(r, g, b) {
 
 //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-red.addEventListener("change", function (event) {
-  chosenRedColor = event.target.value;
+function changeTheColor() {
   mainBackground();
   headerBackground();
-  console.log(main.style.backgroundColor);
+  const currentColor = document.querySelector("#currentColor");
   currentColor.innerText =
     "#" +
     rgbToHex(
@@ -59,30 +57,21 @@ red.addEventListener("change", function (event) {
       parseInt(chosenGreenColor),
       parseInt(chosenBlueColor)
     );
+}
+
+//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+red.addEventListener("change", function (event) {
+  chosenRedColor = event.target.value;
+  changeTheColor();
 });
 
 green.addEventListener("change", function (event) {
   chosenGreenColor = event.target.value;
-  mainBackground();
-  headerBackground();
-  currentColor.innerText =
-    "#" +
-    rgbToHex(
-      parseInt(chosenRedColor),
-      parseInt(chosenGreenColor),
-      parseInt(chosenBlueColor)
-    );
+  changeTheColor();
 });
 
 blue.addEventListener("change", function (event) {
   chosenBlueColor = event.target.value;
-  mainBackground();
-  headerBackground();
-  currentColor.innerText =
-    "#" +
-    rgbToHex(
-      parseInt(chosenRedColor),
-      parseInt(chosenGreenColor),
-      parseInt(chosenBlueColor)
-    );
+  changeTheColor();
 });
